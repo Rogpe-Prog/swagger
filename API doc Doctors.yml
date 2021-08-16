@@ -35,4 +35,70 @@ paths:
                       type: integer
                     descricao:
                         type: string
-
+    post: 
+      summary: Cria novas especialidades
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                descricao:
+                  type: string
+      responses:
+        201:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    descricao:
+                      type: string
+  /especialidades/{id}:
+    parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+    get:
+      summary: Recupera uma entidade pelo ID
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  descricao:
+                      type: string
+        404:
+          description: Especiaidade não encontrada
+          content:
+            application/json:
+              example: "Not Found"
+    delete:
+      summary: Deleta especialidade
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  descricao:
+                    type: string
+      404:
+        description: ID não encontrado
+        content:
+          application/json:
+            example: "Not Found"
